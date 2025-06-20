@@ -22,47 +22,65 @@ const Contact = () => {
   // ========== Email Validation end here ================
 
   const handleSend = async (e: any) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!username || !phoneNumber || !email || !subject || !message) {
-    setErrMsg("All fields are required.");
-    return;
-  }
+    // Input Validations
+    if (!username || !phoneNumber || !email || !subject || !message) {
+      setErrMsg("All fields are required.");
+      setSuccessMsg("");
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzs_bOFX674Xy9rcRJU96Bm3a6vuEhdJw92qS2IgPcVVX_YuVi2UgPyTlWv41Rr3OSj/exec";
-
-  const payload = {
-    username,
-    phoneNumber,
-    email,
-    subject,
-    message,
-  };
-
-  try {
-    const res = await fetch(scriptURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    const text = await res.text();
-    if (text === "Success") {
-      setSuccessMsg("Message sent successfully!");
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
-      setErrMsg("");
-    } else {
-      setErrMsg("Something went wrong. Please try again.");
+      // Hide error after 3 seconds
+      setTimeout(() => setErrMsg(""), 3000);
+      return;
     }
-  } catch (err) {
-    console.error(err);
-    setErrMsg("Failed to send message. Try later.");
-  }
-};
+
+    const scriptURL =
+      "https://script.google.com/macros/s/AKfycbyjHrnGopSa7lBc22mV2113uIYr2mbJkJDutFzIo-ybcCEUASvuTRFfUVmVNpgLv31I/exec";
+
+    const payload = {
+      username,
+      phoneNumber,
+      email,
+      subject,
+      message,
+    };
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.text();
+
+      if (result === "Success") {
+        setSuccessMsg(
+          `Thank you ${username}, your message has been sent successfully!`
+        );
+        setErrMsg("");
+        setUsername("");
+        setPhoneNumber("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+
+        // Hide success after 3 seconds
+        setTimeout(() => setSuccessMsg(""), 3000);
+      } else {
+        setErrMsg("Something went wrong. Please try again.");
+        setSuccessMsg("");
+        setTimeout(() => setErrMsg(""), 3000);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setErrMsg("Network error. Please try again later.");
+      setSuccessMsg("");
+      setTimeout(() => setErrMsg(""), 3000);
+    }
+  };
   return (
     <section
       id="contact"
