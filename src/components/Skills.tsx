@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "../utils/motionAnimations";
 
 const Skills = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      variants={staggerContainer}
+      initial="initial"
+      animate="animate"
       className="w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20"
     >
-      <div className="w-full lgl:w-1/2">
+      <motion.div variants={fadeInUp} className="w-full lgl:w-1/2">
         <div className="py-12 font-titleFont flex flex-col gap-4">
-          
           <h2 className="text-3xl md:text-4xl font-bold">Communication & Reporting</h2>
         </div>
         <div className='className="mt-14 w-full flex flex-col gap-6'>
@@ -79,11 +80,10 @@ const Skills = () => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="w-full lgl:w-1/2">
+      <motion.div variants={fadeInUp} className="w-full lgl:w-1/2">
         <div className="py-12 font-titleFont flex flex-col gap-4">
-         
           <h2 className="text-3xl md:text-4xl font-bold">Development Skill</h2>
         </div>
         <div className="flex flex-col gap-6">
@@ -153,7 +153,7 @@ const Skills = () => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

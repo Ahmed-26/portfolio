@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
-import { FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaYoutube, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
 import { logo } from "../assets";
 import { navLinksdata } from "../constants";
 
@@ -81,25 +81,31 @@ const Navbar = () => {
                   Find me in
                 </h2>
                 <div className="flex gap-4">
-                  <a href="https://www.youtube.com/@reactjsBD" target="_blank">
+                  <a
+                    href="https://www.instagram.com/m.ahmed__19/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span className="bannerIcon">
-                      <FaYoutube />
+                      <FaInstagram />
                     </span>
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/noor-mohammad-ab2245193/"
+                    href="https://github.com/Ahmed-26"
                     target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="bannerIcon">
+                      <FaGithub />
+                    </span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/ahmed-rasheed-7123701b6/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <span className="bannerIcon">
                       <FaLinkedinIn />
-                    </span>
-                  </a>
-                  <a
-                    href="https://www.facebook.com/Noorlalu143/"
-                    target="_blank"
-                  >
-                    <span className="bannerIcon">
-                      <FaFacebookF />
                     </span>
                   </a>
                 </div>

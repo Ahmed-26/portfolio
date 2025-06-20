@@ -1,4 +1,4 @@
-import { FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaYoutube, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
 import { contactImg } from "../assets";
 
 const ContactLeft = () => {
@@ -30,22 +30,22 @@ const ContactLeft = () => {
       <div className="flex flex-col gap-4">
         <h2 className="text-base uppercase font-titleFont mb-4">Find me in</h2>
         <div className="flex gap-4">
-          <a href="https://www.youtube.com/@reactjsBD" target="_blank">
+          <a href="https://www.instagram.com/m.ahmed__19/" target="_blank">
             <span className="bannerIcon">
-              <FaYoutube />
+              <FaInstagram />
             </span>
           </a>
           <a
-            href="https://www.linkedin.com/in/noor-mohammad-ab2245193/"
+            href="https://github.com/Ahmed-26"
             target="_blank"
           >
             <span className="bannerIcon">
-              <FaLinkedinIn />
+              <FaGithub />
             </span>
           </a>
-          <a href="https://www.facebook.com/Noorlalu143/" target="_blank">
+          <a href="https://www.linkedin.com/in/ahmed-rasheed-7123701b6/" target="_blank">
             <span className="bannerIcon">
-              <FaFacebookF />
+              <FaLinkedinIn />
             </span>
           </a>
         </div>
