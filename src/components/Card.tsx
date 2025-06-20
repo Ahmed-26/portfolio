@@ -1,4 +1,4 @@
-import { HiArrowRight } from "react-icons/hi";
+// import { HiArrowRight } from "react-icons/hi";
 
 interface Props {
   title: string;
