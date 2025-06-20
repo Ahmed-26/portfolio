@@ -30,12 +30,12 @@ const LeftBanner = () => {
     deleteSpeed: 10,
     delaySpeed: 2000,
   });
-  
+
   return (
     <FadeIn className="w-full lgl:w-1/2 flex flex-col gap-20">
       <div className="flex flex-col gap-5">
         <h4 className=" text-lg font-normal">WELCOME TO MY WORLD</h4>
-        
+
         <h1 className="text-6xl font-bold text-white">
           Hi, I'm{" "}
           <span className="text-designColor capitalize">Ahmed Rasheed</span>
@@ -50,7 +50,11 @@ const LeftBanner = () => {
           real-world problems through code. Passionate about continuous learning
           and applying modern tech in creative ways.
         </p>
-        <a href="/public/Ahmed_Resume.pdf" download className="flex items-center gap-2">
+        <a
+          href="/public/Ahmed_Resume.pdf"
+          download
+          className="flex items-center gap-2"
+        >
           <FaFileDownload className="text-white" />
           <span className="text-base text-white">Download My Resume</span>
         </a>
@@ -58,13 +62,14 @@ const LeftBanner = () => {
       <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
         <div>
           {/* Mobile-only Image Preview */}
-<div className="block lgl:hidden w-full flex justify-center items-center">
-  <img
-    src={bannerImg}
-    alt="Ahmed Rasheed"
-    className="w-[300px] h-[400px] object-cover mb-6"
-  />
-</div>
+          <div className="block lgl:hidden w-full flex justify-center items-center">
+         
+            <img
+              src={bannerImg}
+              alt="Ahmed Rasheed"
+              className="w-[300px] h-[400px] object-cover mb-6"
+            />
+          </div>
 
           <h2 className="text-base uppercase font-titleFont mb-4">
             Find me in
