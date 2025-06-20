@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import ContactLeft from "./ContactLeft";
 import Title from "./Title";
 import { FadeIn } from "./FadeIn";
@@ -9,126 +10,159 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbyjHrnGopSa7lBc22mV2113uIYr2mbJkJDutFzIo-ybcCEUASvuTRFfUVmVNpgLv31I/exec";
-
-  const emailValidation = (email: string) =>
-    String(email)
-      .toLowerCase()
+  // ========== Email Validation start here ==============
+  const emailValidation = (email: string) => {
+    return String(email)
+      .toLocaleLowerCase()
       .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
+  };
+  // ========== Email Validation end here ================
 
-  const handleSubmit = async (e: any) => {
+  const handleSend = (e: any) => {
     e.preventDefault();
-
-    // Validation
-    if (!username || !phoneNumber || !email || !subject || !message) {
-      setErrMsg("All fields are required!");
-      return;
-    }
-
-    if (!emailValidation(email)) {
-      setErrMsg("Invalid email format!");
-      return;
-    }
-
-    setErrMsg("");
-
-    const formData = new FormData();
-    formData.append("username", username);
-    formData.append("phoneNumber", phoneNumber);
-    formData.append("email", email);
-    formData.append("subject", subject);
-    formData.append("message", message);
-
-    try {
-      await fetch(scriptURL, {
-        method: "POST",
-        body: formData,
-        mode: "no-cors", // Required for Google Apps Script
-      });
-
-      setSuccessMsg(`Thank you ${username}, your message has been sent!`);
+    if (username === "") {
+      setErrMsg("Username is required!");
+    } else if (phoneNumber === "") {
+      setErrMsg("Phone number is required!");
+    } else if (email === "") {
+      setErrMsg("Please give your Email!");
+    } else if (!emailValidation(email)) {
+      setErrMsg("Give a valid Email!");
+    } else if (subject === "") {
+      setErrMsg("Plese give your Subject!");
+    } else if (message === "") {
+      setErrMsg("Message is required!");
+    } else {
+      setSuccessMsg(
+        `Thank you dear ${username}, Your Messages has been sent Successfully!`
+      );
+      setErrMsg("");
       setUsername("");
       setPhoneNumber("");
       setEmail("");
       setSubject("");
       setMessage("");
-
-      setTimeout(() => {
-        setSuccessMsg("");
-      }, 3000);
-    } catch (error) {
-      setErrMsg("Network error. Please try again.");
     }
   };
-
   return (
-    <section id="contact" className="w-full py-20 border-b border-gray-700">
+    <section
+      id="contact"
+      className="w-full py-20 border-b-[1px] border-b-gray-700"
+    >
       <FadeIn>
-        <div className="text-center">
+        <div className="flex justify-center items-center text-center">
           <Title title="CONTACT" des="Contact With Me" />
         </div>
-
-        <div className="flex flex-col lgl:flex-row justify-between gap-10">
-          <ContactLeft />
-          <div className="w-full lgl:w-[60%] bg-gradient-to-r from-[#0B1120] to-[#0B1120] rounded-lg p-6 shadow-shadowOne">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              {errMsg && (
-                <p className="text-red-500 text-center animate-bounce">{errMsg}</p>
-              )}
-              {successMsg && (
-                <p className="text-green-500 text-center animate-bounce">
-                  {successMsg}
-                </p>
-              )}
-
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="contactInput"
-              />
-              <input
-                type="text"
-                placeholder="Phone Number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                className="contactInput"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="contactInput"
-              />
-              <input
-                type="text"
-                placeholder="Subject"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                className="contactInput"
-              />
-              <textarea
-                rows={5}
-                placeholder="Your Message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="contactTextArea"
-              ></textarea>
-
-              <button
-                type="submit"
-                className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border border-designColor"
-              >
-                Send Message
-              </button>
-            </form>
+        <div className="w-full">
+          <div className="w-full h-auto flex flex-col lgl:flex-row justify-between">
+            <ContactLeft />
+            <div className="w-full lgl:w-[60%] h-full py-10 bg-gradient-to-r from-[#0B1120] to-[#0B1120] flex flex-col gap-8 p-4 lgl:p-8 rounded-lg shadow-shadowOne">
+              <form className="w-full flex flex-col gap-4 lgl:gap-6 py-2 lgl:py-5">
+                {errMsg && (
+                  <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
+                    {errMsg}
+                  </p>
+                )}
+                {successMsg && (
+                  <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
+                    {successMsg}
+                  </p>
+                )}
+                <div className="w-full flex flex-col lgl:flex-row gap-10">
+                  <div className="w-full lgl:w-1/2 flex flex-col gap-4">
+                    <p className="text-sm text-gray-400 uppercase tracking-wide">
+                      Your name
+                    </p>
+                    <input
+                      onChange={(e) => setUsername(e.target.value)}
+                      value={username}
+                      className={`${
+                        errMsg === "Username is required!" &&
+                        "outline-designColor"
+                      } contactInput`}
+                      type="text"
+                    />
+                  </div>
+                  <div className="w-full lgl:w-1/2 flex flex-col gap-4">
+                    <p className="text-sm text-gray-400 uppercase tracking-wide">
+                      Phone Number
+                    </p>
+                    <input
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      value={phoneNumber}
+                      className={`${
+                        errMsg === "Phone number is required!" &&
+                        "outline-designColor"
+                      } contactInput`}
+                      type="text"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <p className="text-sm text-gray-400 uppercase tracking-wide">
+                    Email
+                  </p>
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    className={`${
+                      errMsg === "Please give your Email!" &&
+                      "outline-designColor"
+                    } contactInput`}
+                    type="email"
+                  />
+                </div>
+                <div className="flex flex-col gap-4">
+                  <p className="text-sm text-gray-400 uppercase tracking-wide">
+                    Subject
+                  </p>
+                  <input
+                    onChange={(e) => setSubject(e.target.value)}
+                    value={subject}
+                    className={`${
+                      errMsg === "Plese give your Subject!" &&
+                      "outline-designColor"
+                    } contactInput`}
+                    type="text"
+                  />
+                </div>
+                <div className="flex flex-col gap-4">
+                  <p className="text-sm text-gray-400 uppercase tracking-wide">
+                    Message
+                  </p>
+                  <textarea
+                    onChange={(e) => setMessage(e.target.value)}
+                    value={message}
+                    className={`${
+                      errMsg === "Message is required!" && "outline-designColor"
+                    } contactTextArea`}
+                    cols={30}
+                    rows={8}
+                  ></textarea>
+                </div>
+                <div className="w-full">
+                  <button
+                    onClick={handleSend}
+                    className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-gray-600 border"
+                  >
+                    Send Message
+                  </button>
+                </div>
+                {errMsg && (
+                  <p className="py-3 bg-gradient-to-r from-[#141518] to-[#141518] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
+                    {errMsg}
+                  </p>
+                )}
+                {successMsg && (
+                  <p className="py-3 bg-gradient-to-r from-[#141518] to-[#141518] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
+                    {successMsg}
+                  </p>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </FadeIn>
