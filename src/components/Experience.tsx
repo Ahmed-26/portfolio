@@ -19,7 +19,7 @@ const Experience = () => {
 
       <motion.div
         variants={fadeInUp}
-        className="mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10"
+        className="mt-6 lgl:mt-14 w-full min-h-screen border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10"
       >
         {[
           {
