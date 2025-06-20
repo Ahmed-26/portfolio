@@ -21,30 +21,68 @@ const Contact = () => {
   };
   // ========== Email Validation end here ================
 
-  const handleSend = (e: any) => {
+  const handleSend = async (e: any) => {
     e.preventDefault();
+
     if (username === "") {
       setErrMsg("Username is required!");
-    } else if (phoneNumber === "") {
+      return;
+    }
+    if (phoneNumber === "") {
       setErrMsg("Phone number is required!");
-    } else if (email === "") {
+      return;
+    }
+    if (email === "") {
       setErrMsg("Please give your Email!");
-    } else if (!emailValidation(email)) {
+      return;
+    }
+    if (!emailValidation(email)) {
       setErrMsg("Give a valid Email!");
-    } else if (subject === "") {
-      setErrMsg("Plese give your Subject!");
-    } else if (message === "") {
+      return;
+    }
+    if (subject === "") {
+      setErrMsg("Please give your Subject!");
+      return;
+    }
+    if (message === "") {
       setErrMsg("Message is required!");
-    } else {
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
+      return;
+    }
+
+    setErrMsg("");
+    setSuccessMsg("Sending...");
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbyP1w55vrT4uKhifTBc2rRc_FIRNmELNzWq6c4_kxKwj08tXif9q91dp1IcX6wZRoPD/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            phoneNumber,
+            email,
+            subject,
+            message,
+          }),
+        }
       );
-      setErrMsg("");
+
+      setSuccessMsg(
+        `Thank you dear ${username}, Your Message has been sent Successfully!`
+      );
+
       setUsername("");
       setPhoneNumber("");
       setEmail("");
       setSubject("");
       setMessage("");
+    } catch (error) {
+      setErrMsg("Something went wrong. Please try again later.");
+      setSuccessMsg("");
     }
   };
   return (
