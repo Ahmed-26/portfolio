@@ -22,69 +22,47 @@ const Contact = () => {
   // ========== Email Validation end here ================
 
   const handleSend = async (e: any) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (username === "") {
-      setErrMsg("Username is required!");
-      return;
-    }
-    if (phoneNumber === "") {
-      setErrMsg("Phone number is required!");
-      return;
-    }
-    if (email === "") {
-      setErrMsg("Please give your Email!");
-      return;
-    }
-    if (!emailValidation(email)) {
-      setErrMsg("Give a valid Email!");
-      return;
-    }
-    if (subject === "") {
-      setErrMsg("Please give your Subject!");
-      return;
-    }
-    if (message === "") {
-      setErrMsg("Message is required!");
-      return;
-    }
+  if (!username || !phoneNumber || !email || !subject || !message) {
+    setErrMsg("All fields are required.");
+    return;
+  }
 
-    setErrMsg("");
-    setSuccessMsg("Sending...");
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzs_bOFX674Xy9rcRJU96Bm3a6vuEhdJw92qS2IgPcVVX_YuVi2UgPyTlWv41Rr3OSj/exec";
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbyP1w55vrT4uKhifTBc2rRc_FIRNmELNzWq6c4_kxKwj08tXif9q91dp1IcX6wZRoPD/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            phoneNumber,
-            email,
-            subject,
-            message,
-          }),
-        }
-      );
+  const payload = {
+    username,
+    phoneNumber,
+    email,
+    subject,
+    message,
+  };
 
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Message has been sent Successfully!`
-      );
+  try {
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
+    const text = await res.text();
+    if (text === "Success") {
+      setSuccessMsg("Message sent successfully!");
       setUsername("");
       setPhoneNumber("");
       setEmail("");
       setSubject("");
       setMessage("");
-    } catch (error) {
-      setErrMsg("Something went wrong. Please try again later.");
-      setSuccessMsg("");
+      setErrMsg("");
+    } else {
+      setErrMsg("Something went wrong. Please try again.");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    setErrMsg("Failed to send message. Try later.");
+  }
+};
   return (
     <section
       id="contact"
