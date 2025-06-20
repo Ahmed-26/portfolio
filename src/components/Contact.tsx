@@ -5,7 +5,7 @@ import { FadeIn } from "./FadeIn";
 
 const Contact = () => {
   const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
@@ -13,20 +13,23 @@ const Contact = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbyjHrnGopSa7lBc22mV2113uIYr2mbJkJDutFzIo-ybcCEUASvuTRFfUVmVNpgLv31I/exec";
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbyjHrnGopSa7lBc22mV2113uIYr2mbJkJDutFzIo-ybcCEUASvuTRFfUVmVNpgLv31I/exec";
 
-  const emailValidation = (email: string) => {
-    return String(email).toLowerCase().match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
-  };
+  const emailValidation = (email: string) =>
+    String(email)
+      .toLowerCase()
+      .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     // Validation
-    if (!username || !phone || !email || !subject || !message) {
+    if (!username || !phoneNumber || !email || !subject || !message) {
       setErrMsg("All fields are required!");
       return;
     }
+
     if (!emailValidation(email)) {
       setErrMsg("Invalid email format!");
       return;
@@ -34,24 +37,23 @@ const Contact = () => {
 
     setErrMsg("");
 
-    // Prepare form data
     const formData = new FormData();
-    formData.append("Name", username);
-    formData.append("Phone", phone);
-    formData.append("Email", email);
-    formData.append("Subject", subject);
-    formData.append("Message", message);
+    formData.append("username", username);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("email", email);
+    formData.append("subject", subject);
+    formData.append("message", message);
 
     try {
       await fetch(scriptURL, {
         method: "POST",
-        mode: "no-cors",
         body: formData,
+        mode: "no-cors", // Required for Google Apps Script
       });
 
       setSuccessMsg(`Thank you ${username}, your message has been sent!`);
       setUsername("");
-      setPhone("");
+      setPhoneNumber("");
       setEmail("");
       setSubject("");
       setMessage("");
@@ -65,21 +67,25 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-20 border-b-[1px] border-b-gray-700">
+    <section id="contact" className="w-full py-20 border-b border-gray-700">
       <FadeIn>
-        <div className="flex justify-center items-center text-center">
+        <div className="text-center">
           <Title title="CONTACT" des="Contact With Me" />
         </div>
-        <div className="w-full flex flex-col lgl:flex-row justify-between">
+
+        <div className="flex flex-col lgl:flex-row justify-between gap-10">
           <ContactLeft />
-          <div className="w-full lgl:w-[60%] bg-gradient-to-r from-[#0B1120] to-[#0B1120] rounded-lg p-4 lgl:p-8 shadow-shadowOne">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="w-full lgl:w-[60%] bg-gradient-to-r from-[#0B1120] to-[#0B1120] rounded-lg p-6 shadow-shadowOne">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               {errMsg && (
                 <p className="text-red-500 text-center animate-bounce">{errMsg}</p>
               )}
               {successMsg && (
-                <p className="text-green-500 text-center animate-bounce">{successMsg}</p>
+                <p className="text-green-500 text-center animate-bounce">
+                  {successMsg}
+                </p>
               )}
+
               <input
                 type="text"
                 placeholder="Your Name"
@@ -90,8 +96,8 @@ const Contact = () => {
               <input
                 type="text"
                 placeholder="Phone Number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 className="contactInput"
               />
               <input
@@ -109,12 +115,13 @@ const Contact = () => {
                 className="contactInput"
               />
               <textarea
-                placeholder="Your Message"
                 rows={5}
+                placeholder="Your Message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="contactTextArea"
               ></textarea>
+
               <button
                 type="submit"
                 className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border border-designColor"
