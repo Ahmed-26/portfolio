@@ -37,7 +37,7 @@ const Projects = () => {
           />
           
           <ProjectsCard
-            title="Trucking assistant Website"
+            title="Gold price prediction "
             des="Gold price prediction model using machine learning."
             src={projectzero}
             type="video"
