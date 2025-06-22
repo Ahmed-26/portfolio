@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import ContactLeft from "./ContactLeft";
 import Title from "./Title";
 import { FadeIn } from "./FadeIn";
@@ -12,41 +11,89 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // ========== Email Validation start here ==============
+  // Email validation function
   const emailValidation = (email: string) => {
     return String(email)
-      .toLocaleLowerCase()
+      .toLowerCase()
       .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
   };
-  // ========== Email Validation end here ================
 
-  const handleSend = (e: any) => {
+  const handleSend = async (e: any) => {
     e.preventDefault();
+    setIsLoading(true);
+
     if (username === "") {
       setErrMsg("Username is required!");
+      setTimeout(() => setErrMsg(""), 2000);
+      setIsLoading(false);
     } else if (phoneNumber === "") {
       setErrMsg("Phone number is required!");
+      setTimeout(() => setErrMsg(""), 2000);
+      setIsLoading(false);
     } else if (email === "") {
       setErrMsg("Please give your Email!");
+      setTimeout(() => setErrMsg(""), 2000);
+      setIsLoading(false);
     } else if (!emailValidation(email)) {
       setErrMsg("Give a valid Email!");
+      setTimeout(() => setErrMsg(""), 2000);
+      setIsLoading(false);
     } else if (subject === "") {
-      setErrMsg("Plese give your Subject!");
+      setErrMsg("Please give your Subject!");
+      setTimeout(() => setErrMsg(""), 2000);
+      setIsLoading(false);
     } else if (message === "") {
       setErrMsg("Message is required!");
+      setTimeout(() => setErrMsg(""), 2000);
+      setIsLoading(false);
     } else {
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
-      );
-      setErrMsg("");
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      try {
+        const formData = new URLSearchParams();
+        formData.append("name", username);
+        formData.append("phone", phoneNumber);
+        formData.append("email", email);
+        formData.append("subject", subject);
+        formData.append("message", message);
+
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbxMF-XErrn1l1XrE2e0s9-R5zj_ujR-y48ix1QnUb_53uxfZ35ubeaqTlu0e6e4a0cQUA/exec",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData.toString(),
+          }
+        );
+
+        const result = await response.text();
+
+        if (result === "Success") {
+          setSuccessMsg(
+            `Thank you dear ${username}, Your Message has been sent Successfully!`
+          );
+          setErrMsg("");
+          setUsername("");
+          setPhoneNumber("");
+          setEmail("");
+          setSubject("");
+          setMessage("");
+          setTimeout(() => setSuccessMsg(""), 2000);
+        } else {
+          setErrMsg("There was an error submitting the form.");
+          setTimeout(() => setErrMsg(""), 2000);
+        }
+      } catch (error) {
+        setErrMsg("Failed to send message. Try again later.");
+        setTimeout(() => setErrMsg(""), 2000);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
+
   return (
     <section
       id="contact"
@@ -123,7 +170,7 @@ const Contact = () => {
                     onChange={(e) => setSubject(e.target.value)}
                     value={subject}
                     className={`${
-                      errMsg === "Plese give your Subject!" &&
+                      errMsg === "Please give your Subject!" &&
                       "outline-designColor"
                     } contactInput`}
                     type="text"
@@ -146,21 +193,38 @@ const Contact = () => {
                 <div className="w-full">
                   <button
                     onClick={handleSend}
-                    className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-gray-600 border"
+                    disabled={isLoading}
+                    className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-gray-600 border flex items-center justify-center gap-2"
                   >
-                    Send Message
+                    {isLoading ? (
+                      <>
+                        <svg
+                          className="animate-spin h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          ></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      "Send Message"
+                    )}
                   </button>
                 </div>
-                {errMsg && (
-                  <p className="py-3 bg-gradient-to-r from-[#141518] to-[#141518] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
-                    {errMsg}
-                  </p>
-                )}
-                {successMsg && (
-                  <p className="py-3 bg-gradient-to-r from-[#141518] to-[#141518] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
-                    {successMsg}
-                  </p>
-                )}
               </form>
             </div>
           </div>
