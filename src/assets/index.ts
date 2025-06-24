@@ -3,6 +3,8 @@ import bannerImg from "./images/bannerImg.png";
 import project2 from "./images/projects/project2.mp4";
 import project3 from "./images/projects/project3.jpg";
 import EDA from "./images/projects/EDA.png";
+import cap1 from "./images/projects/Cap1.jpg";
+
 import project4 from "./images/projects/project4.mp4";
 import projectzero from "./images/projects/projectzero.mp4";
 
@@ -19,6 +21,7 @@ export {
   project4,
   projectzero,
   EDA,
+  cap1,
   testimonialOne,
   testimonialTwo,
   quote,
