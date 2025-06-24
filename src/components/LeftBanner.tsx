@@ -63,7 +63,6 @@ const LeftBanner = () => {
         <div>
           {/* Mobile-only Image Preview */}
           <div className="block lgl:hidden w-full flex justify-center items-center">
-         
             <img
               src={bannerImg}
               alt="Ahmed Rasheed"
