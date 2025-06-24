@@ -1,6 +1,13 @@
 import Title from "./Title";
 import ProjectsCard from "./ProjectsCard";
-import { project2,project3,project4,projectzero,EDA} from "../assets";
+import {
+  project2,
+  project3,
+  project4,
+  projectzero,
+  EDA,
+  smart_w,
+} from "../assets";
 import { FadeIn } from "./FadeIn";
 
 const Projects = () => {
@@ -35,7 +42,7 @@ const Projects = () => {
             src={project4}
             type="video"
           />
-          
+
           <ProjectsCard
             title="Gold price prediction "
             des="Gold price prediction model using machine learning."
@@ -46,6 +53,12 @@ const Projects = () => {
             title="Titanic Survival EDA analysis"
             des="Exploratory Data Analysis (EDA) on Titanic dataset using Python."
             src={EDA} // Replace with your video URL
+            type="image"
+          />
+          <ProjectsCard
+            title="Smart Watch Sales Performance Dashboard"
+            des="Interactive dashboard showcasing smart watch sales performance."
+            src={smart_w} // Replace with your video URL
             type="image"
           />
         </div>
