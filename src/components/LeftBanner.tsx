@@ -20,7 +20,7 @@ import {
   SiStreamlit,
 } from "react-icons/si";
 import { FadeIn } from "./FadeIn";
-import { bannerImg } from "../assets";
+import { Ahmed_rasheed } from "../assets";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
@@ -65,7 +65,7 @@ const LeftBanner = () => {
           <div className="block lgl:hidden w-full flex justify-center items-center">
          
             <img
-              src={bannerImg}
+              src={Ahmed_rasheed}
               alt="Ahmed Rasheed"
               className="w-[300px] h-[400px] object-cover mb-6"
             />

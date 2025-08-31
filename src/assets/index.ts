@@ -1,5 +1,5 @@
 import logo from "./images/logo.png";
-import bannerImg from "./images/bannerImg.png";
+import Ahmed_rasheed from "./images/Ahmed_rasheed.png";
 import project2 from "./images/projects/project2.mp4";
 import project3 from "./images/projects/project3.jpg";
 import EDA from "./images/projects/EDA.png";
@@ -13,7 +13,7 @@ import contactImg from "./images/contact/contactImg.png";
 
 export {
   logo,
-  bannerImg,
+  Ahmed_rasheed,
   project2,
   project3,
   project4,

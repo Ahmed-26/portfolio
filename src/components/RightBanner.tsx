@@ -1,4 +1,4 @@
-import { bannerImg } from "../assets";
+import { Ahmed_rasheed, bannerImg } from "../assets";
 import { motion } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 
@@ -10,7 +10,7 @@ const RightBanner = () => {
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, ease: "easeOut" }}
-    src={bannerImg}
+    src={Ahmed_rasheed}
     alt="bannerImg"
     className="w-[300px] h-[400px] lgl:w-[500px] lgl:h-[680px] z-10 object-cover scale-105 transition-transform duration-700"
   />
