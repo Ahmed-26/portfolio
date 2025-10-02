@@ -23,16 +23,22 @@ const Experience = () => {
       >
         {[
           {
-            title: "AI/ML Developer",
-            subTitle: "XPO Code - (2025 - Present)",
+            title: "AI Solutions & Client Success Manager",
+            subTitle: "AABS - (2024 - Present)",
             result: "Pakistan",
-            des: "AI/Ml developer with a focus on creating intelligent systems and applications that leverage machine learning algorithms to solve real-world problems.",
+            des: "AI Solutions & Client Success Manager with a focus on creating intelligent systems and applications that leverage machine learning algorithms to solve real-world problems.",
           },
           {
-            title: "Data Analyst",
-            subTitle: "Self Employed - (2024 - Present)",
+            title: "AI Consultant",
+            subTitle: "AABS - (Jan 2024 - Sep 2024)",
             result: "Pakistan",
-            des: "Data analyst with a focus on extracting insights from data, creating visualizations, and providing actionable recommendations to drive business decisions.",
+            des: "AI Consultant with a focus on extracting insights from data, creating visualizations, and providing actionable recommendations to drive business decisions.",
+          },
+          {
+            title: "AI Engineer",
+            subTitle: "AABS - (Mar 2023 - Dec 2023)",
+            result: "Pakistan",
+            des: "AI Engineer with a focus on designing and implementing machine learning models and algorithms to solve complex problems.",
           },
           {
             title: "Social Media Manager",
