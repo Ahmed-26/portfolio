@@ -1,4 +1,4 @@
-import { Ahmed_rasheed, bannerImg } from "../assets";
+import { Ahmed_rasheed,  } from "../assets";
 import { motion } from "framer-motion";
 import { FadeIn } from "./FadeIn";
 
