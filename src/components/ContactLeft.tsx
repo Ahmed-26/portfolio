@@ -3,18 +3,18 @@ import { contactImg } from "../assets";
 
 const ContactLeft = () => {
   return (
-    <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#0B1120] to-[#0B1120] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
+    <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#0B1120] to-[#0B1120] p-4 sm:p-6 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-6 sm:gap-8 justify-center">
       <img
-        className="w-full h-64 object-cover rounded-lg mb-2"
+        className="w-full h-52 sm:h-64 object-cover rounded-lg mb-2"
         src={contactImg}
         alt="contactImg"
       />
-      <div className="flex flex-col gap-4">
-        <h3 className="text-3xl font-bold text-white">Ahmed Rasheed</h3>
-        <p className="text-lg font-normal text-gray-400">
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <h3 className="text-2xl sm:text-3xl font-bold text-white">Ahmed Rasheed</h3>
+        <p className="text-base sm:text-lg font-normal text-gray-400">
           Data Analyst, Python Developer & Academic Teacher
         </p>
-        <p className="text-base text-gray-400 tracking-wide">
+        <p className="text-sm sm:text-base text-gray-400 tracking-wide leading-relaxed">
           Data Analyst, Python Developer, and Academic Teacher with expertise in
           data science, web development, and digital marketing. Skilled in
           extracting insights from data, building predictive models, and
@@ -22,10 +22,10 @@ const ContactLeft = () => {
           problem-solving, automation, and mentoring students in O-Level / IGCSE
           Computer Science at Lahore Maktab School.
         </p>
-        <p className="text-base text-gray-400 flex items-center gap-2">
-          Location: <span className="text-lightText">Lahore, Pakistan</span>
+        <p className="text-sm sm:text-base text-gray-400 flex flex-wrap items-center gap-2">
+          Location: <span className="text-lightText font-medium">Lahore, Pakistan</span>
         </p>
-        <p className="text-base text-gray-400 flex items-center gap-2">
+        <p className="text-sm sm:text-base text-gray-400 flex flex-wrap items-center gap-2">
           Phone:{" "}
           <a
             href="https://wa.me/923094101992"
@@ -37,20 +37,20 @@ const ContactLeft = () => {
             +92 309-4101992
           </a>
         </p>
-        <p className="text-base text-gray-400 flex items-center gap-2">
+        <p className="text-sm sm:text-base text-gray-400 flex flex-wrap items-center gap-2">
           Email:{" "}
           <a
             href="mailto:ahmedrasheed6008@gmail.com"
-            className="text-lightText hover:text-designColor transition-colors duration-300 underline cursor-pointer"
+            className="text-lightText hover:text-designColor transition-colors duration-300 underline cursor-pointer break-all"
             title="Send Email"
           >
             ahmedrasheed6008@gmail.com
           </a>
         </p>
       </div>
-      <div className="flex flex-col gap-4">
-        <h2 className="text-base uppercase font-titleFont mb-4">Find me in</h2>
-        <div className="flex gap-4">
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <h2 className="text-sm sm:text-base uppercase font-titleFont mb-2 sm:mb-4">Find me in</h2>
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           <a
             href="https://wa.me/923094101992"
             target="_blank"
@@ -103,4 +103,3 @@ const ContactLeft = () => {
 };
 
 export default ContactLeft;
-

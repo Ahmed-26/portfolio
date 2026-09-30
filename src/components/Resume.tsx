@@ -15,14 +15,14 @@ const Resume = () => {
   return (
     <section
       id="resume"
-      className="w-full py-20 border-b-[1px] border-b-gray-700"
+      className="w-full py-14 sm:py-20 border-b-[1px] border-b-gray-700"
     >
       <FadeIn>
         <div className="flex justify-center items-center text-center">
           <Title title="5+ YEARS OF EXPERIENCE" des="My Resume" />
         </div>
         <div>
-          <ul className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+          <ul className="w-full grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-0">
             <li
               onClick={() => {
                 setExperienceData(true);
@@ -32,8 +32,8 @@ const Resume = () => {
               }}
               className={`${
                 experienceData
-                  ? "border-designColor rounded-lg"
-                  : "border-transparent"
+                  ? "border-designColor text-designColor rounded-lg"
+                  : "border-transparent text-gray-300"
               } resumeLi`}
             >
               Experience
@@ -47,8 +47,8 @@ const Resume = () => {
               }}
               className={`${
                 educationData
-                  ? "border-designColor rounded-lg"
-                  : "border-transparent"
+                  ? "border-designColor text-designColor rounded-lg"
+                  : "border-transparent text-gray-300"
               } resumeLi`}
             >
               Education
@@ -62,11 +62,11 @@ const Resume = () => {
               }}
               className={`${
                 skillData
-                  ? "border-designColor rounded-lg"
-                  : "border-transparent"
+                  ? "border-designColor text-designColor rounded-lg"
+                  : "border-transparent text-gray-300"
               } resumeLi`}
             >
-              Professional Skills
+              Skills
             </li>
             <li
               onClick={() => {
@@ -77,8 +77,8 @@ const Resume = () => {
               }}
               className={`${
                 achievementData
-                  ? "border-designColor rounded-lg"
-                  : "border-transparent"
+                  ? "border-designColor text-designColor rounded-lg"
+                  : "border-transparent text-gray-300"
               } resumeLi`}
             >
               Achievements
@@ -95,4 +95,3 @@ const Resume = () => {
 };
 
 export default Resume;
-
