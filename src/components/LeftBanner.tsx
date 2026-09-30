@@ -24,7 +24,12 @@ import { Ahmed_rasheed } from "../assets";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
-    words: ["Professional Coder.", "AI/ML Developer.", "Data Analyst."],
+    words: [
+      "Python Developer.",
+      "Data Analyst.",
+      "Academic Teacher.",
+      "Web Developer.",
+    ],
     loop: true,
     typeSpeed: 20,
     deleteSpeed: 10,
@@ -45,10 +50,13 @@ const LeftBanner = () => {
           <Cursor cursorStyle="|" cursorColor="" />
         </h2>
         <p className="text-base font-bodyFont leading-6 tracking-wider">
-          A Python & AI/ML Developer with a Data Science mindset. I design
-          intelligent systems, build data powered applications, and solve
-          real-world problems through code. Passionate about continuous learning
-          and applying modern tech in creative ways.
+          Data Analyst, Python Developer, and Academic Teacher with expertise in
+          data science, web development, and digital marketing. Skilled in
+          extracting insights from data, building predictive models, and
+          developing responsive web applications. Passionate about
+          problem-solving, automation, and mentoring students in O-Level / IGCSE
+          Computer Science at Lahore Maktab School, web development, and digital
+          marketing.
         </p>
         <a
           href="/public/Ahmed_Resume.pdf"
@@ -63,7 +71,6 @@ const LeftBanner = () => {
         <div>
           {/* Mobile-only Image Preview */}
           <div className="block lgl:hidden w-full flex justify-center items-center">
-         
             <img
               src={Ahmed_rasheed}
               alt="Ahmed Rasheed"

@@ -5,8 +5,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Resume from "./components/Resume";
-import Testimonial from "./components/Testimonial";
-import ScrollToTopButton from "./components/ScrollToTopButton"; // <-- Add this line
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 function App() {
   return (
@@ -18,10 +17,9 @@ function App() {
           <Feature />
           <Projects />
           <Resume />
-          <Testimonial />
           <Contact />
           <Footer />
-          <ScrollToTopButton /> {/* <-- Add this line */}
+          <ScrollToTopButton />
         </div>
       </div>
     </main>

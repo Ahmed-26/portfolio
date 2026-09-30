@@ -50,10 +50,11 @@ const Navbar = () => {
               <div>
                 <img className="w-32" src={logo} alt="logo" />
                 <p className="text-sm text-gray-400 mt-2">
-                  A Python & AI/ML Developer with a Data Science mindset. I
-                  design intelligent systems, build data powered applications,
-                  and solve real-world problems through code. Passionate about
-                  continuous learning and applying modern tech in creative ways.
+                  Data Analyst, Python Developer, and Academic Teacher with
+                  expertise in data science, web development, and digital
+                  marketing. Passionate about problem-solving, automation, and
+                  mentoring students in O-Level / IGCSE Computer Science at Lahore
+                  Maktab School.
                 </p>
               </div>
               <ul className="flex flex-col gap-4">
@@ -125,3 +126,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

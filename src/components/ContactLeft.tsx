@@ -1,36 +1,79 @@
-import { FaFacebookF, FaYoutube, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaGithub, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { contactImg } from "../assets";
 
 const ContactLeft = () => {
   return (
-    <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r  from-[#0B1120] to-[#0B1120] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
+    <div className="w-full lgl:w-[35%] h-full bg-gradient-to-r from-[#0B1120] to-[#0B1120] p-4 lgl:p-8 rounded-lg shadow-shadowOne flex flex-col gap-8 justify-center">
       <img
         className="w-full h-64 object-cover rounded-lg mb-2"
         src={contactImg}
         alt="contactImg"
       />
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-4">
         <h3 className="text-3xl font-bold text-white">Ahmed Rasheed</h3>
         <p className="text-lg font-normal text-gray-400">
-          Python Developer
+          Data Analyst, Python Developer & Academic Teacher
         </p>
         <p className="text-base text-gray-400 tracking-wide">
-          A Python & AI/ML Developer with a Data Science mindset. I design
-          intelligent systems, build data powered applications, and solve
-          real-world problems through code. Passionate about continuous learning
-          and applying modern tech in creative ways.
+          Data Analyst, Python Developer, and Academic Teacher with expertise in
+          data science, web development, and digital marketing. Skilled in
+          extracting insights from data, building predictive models, and
+          developing responsive web applications. Passionate about
+          problem-solving, automation, and mentoring students in O-Level / IGCSE
+          Computer Science at Lahore Maktab School.
         </p>
         <p className="text-base text-gray-400 flex items-center gap-2">
-          Phone: <span className="text-lightText">+92 309-4101992</span>
+          Location: <span className="text-lightText">Lahore, Pakistan</span>
         </p>
         <p className="text-base text-gray-400 flex items-center gap-2">
-          Email: <span className="text-lightText">ahmedrasheed6008@gmail.com</span>
+          Phone:{" "}
+          <a
+            href="https://wa.me/923094101992"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lightText hover:text-designColor transition-colors duration-300 underline cursor-pointer"
+            title="Chat on WhatsApp"
+          >
+            +92 309-4101992
+          </a>
+        </p>
+        <p className="text-base text-gray-400 flex items-center gap-2">
+          Email:{" "}
+          <a
+            href="mailto:ahmedrasheed6008@gmail.com"
+            className="text-lightText hover:text-designColor transition-colors duration-300 underline cursor-pointer"
+            title="Send Email"
+          >
+            ahmedrasheed6008@gmail.com
+          </a>
         </p>
       </div>
       <div className="flex flex-col gap-4">
         <h2 className="text-base uppercase font-titleFont mb-4">Find me in</h2>
         <div className="flex gap-4">
-          <a href="https://www.instagram.com/m.ahmed__19/" target="_blank">
+          <a
+            href="https://wa.me/923094101992"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Chat on WhatsApp"
+          >
+            <span className="bannerIcon">
+              <FaWhatsapp />
+            </span>
+          </a>
+          <a
+            href="mailto:ahmedrasheed6008@gmail.com"
+            title="Send Email"
+          >
+            <span className="bannerIcon">
+              <FaEnvelope />
+            </span>
+          </a>
+          <a
+            href="https://www.instagram.com/m.ahmed__19/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="bannerIcon">
               <FaInstagram />
             </span>
@@ -38,12 +81,17 @@ const ContactLeft = () => {
           <a
             href="https://github.com/Ahmed-26"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <span className="bannerIcon">
               <FaGithub />
             </span>
           </a>
-          <a href="https://www.linkedin.com/in/ahmed-rasheed-7123701b6/" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/ahmed-rasheed-7123701b6/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="bannerIcon">
               <FaLinkedinIn />
             </span>
@@ -55,3 +103,4 @@ const ContactLeft = () => {
 };
 
 export default ContactLeft;
+

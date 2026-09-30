@@ -1,5 +1,4 @@
-import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { logo } from "../assets";
+import { FaGithub, FaInstagram, FaLinkedinIn, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-scroll";
 import { FadeIn } from "./FadeIn";
 
@@ -18,7 +17,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="project" spy={true} smooth={true} offset={-70} duration={500} className="text-sm hover:text-designColor cursor-pointer">
+              <Link to="projects" spy={true} smooth={true} offset={-70} duration={500} className="text-sm hover:text-designColor cursor-pointer">
                 Projects
               </Link>
             </li>
@@ -36,6 +35,12 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div className="flex gap-3 pt-2">
+            <a href="https://wa.me/923094101992" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+              <span className="bannerIcon"><FaWhatsapp /></span>
+            </a>
+            <a href="mailto:ahmedrasheed6008@gmail.com" title="Send Email">
+              <span className="bannerIcon"><FaEnvelope /></span>
+            </a>
             <a href="https://www.instagram.com/m.ahmed__19/" target="_blank" rel="noopener noreferrer">
               <span className="bannerIcon"><FaInstagram /></span>
             </a>
