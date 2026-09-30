@@ -5,10 +5,10 @@
 
 @layer components {
   .bannerIcon {
-    @apply w-11 h-11 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-black bg-opacity-25 text-gray-200 text-base sm:text-lg md:text-xl inline-flex items-center justify-center rounded-lg shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300;
+    @apply w-16 h-16 bg-black bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300;
   }
   .resumeLi {
-    @apply w-full h-12 xs:h-14 sm:h-16 md:h-20 bg-black bg-opacity-25 text-xs sm:text-sm md:text-lg font-medium text-gray-300 flex justify-center text-center px-2 cursor-pointer hover:bg-opacity-40 duration-300 items-center border-[1px] rounded-none;
+    @apply w-full h-20 bg-black bg-opacity-25 text-xl text-gray-300 flex justify-center cursor-pointer hover:bg-opacity-40 duration-300 items-center border-[1px] rounded-none;
   }
   .bgOpacity {
     @apply bg-black bg-opacity-40;

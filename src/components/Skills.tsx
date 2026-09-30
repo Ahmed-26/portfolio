@@ -10,10 +10,10 @@ const Skills = () => {
       className="w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20"
     >
       <motion.div variants={fadeInUp} className="w-full lgl:w-1/2">
-        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Communication & Reporting</h2>
+        <div className="py-12 font-titleFont flex flex-col gap-4">
+          <h2 className="text-3xl md:text-4xl font-bold">Communication & Reporting</h2>
         </div>
-        <div className="mt-4 sm:mt-8 lgl:mt-14 w-full flex flex-col gap-6">
+        <div className='className="mt-14 w-full flex flex-col gap-6'>
           <div className="overflow-x-hidden">
             <p className="text-sm uppercase font-medium">Insightful Reports </p>
             <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
@@ -83,10 +83,10 @@ const Skills = () => {
       </motion.div>
 
       <motion.div variants={fadeInUp} className="w-full lgl:w-1/2">
-        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Development Skill</h2>
+        <div className="py-12 font-titleFont flex flex-col gap-4">
+          <h2 className="text-3xl md:text-4xl font-bold">Development Skill</h2>
         </div>
-        <div className="mt-4 sm:mt-8 lgl:mt-14 flex flex-col gap-6">
+        <div className="flex flex-col gap-6">
           <div className="overflow-x-hidden">
             <p className="text-sm uppercase font-medium">Data Cleaning & Preprocessing</p>
             <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
